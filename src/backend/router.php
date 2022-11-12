@@ -48,7 +48,7 @@ if(isset($_GET['r']) && $_GET['r'] != ""){
 		foreach($listCards as $cards){
 	?>
 		<a href="#" class="w-[345px] mb-4 text-center">
-			<img src="http://localhost/What-install/src/backend/files/images/<?=$cards['image1']?>" class="w-full border border-slate-300 dark:border-slate-700 rounded-xl h-44 object-cover">
+			<img src="http://localhost/What-install/src/backend/files/images/<?=$cards['image1']?>" class="w-full border dark:border-slate-300 border-slate-700 rounded-xl h-44 object-cover">
 			<h6 class="text-xl mt-3 font-semibold font-mplus"><?=$cards['cardName']?></h6>
 			<h1 class="opacity-70"><?=$cards['title']?></h1>
 		</a>
@@ -58,11 +58,6 @@ if(isset($_GET['r']) && $_GET['r'] != ""){
 	</div>
 </section>
 	
-<footer class="text-center mt-4 p-3">
-    <h1 class="opacity-40">© 2022 Sebass. All rights reserved. Web based on </h1><a href="https://www.craftz.dog/" class="opacity-50">Takuya Matsuyama's work</a>
-</footer>
-
-
 <?php
 }
 ?>

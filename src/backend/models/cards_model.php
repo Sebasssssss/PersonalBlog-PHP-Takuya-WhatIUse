@@ -20,8 +20,6 @@ class cards_model extends generic_model{
 
 		protected $id;
 
-		protected $totalInList = 5;
-
 	public function getTitle(){
 		return $this->title;
 	}
@@ -262,13 +260,6 @@ class cards_model extends generic_model{
 
 				$sql .= " AND title LIKE ('%".$filters['search']."%')";
 			}
-
-		if(isset($filters['page']) && $filters['page'] != ""){
-			$page = $filters['page'] * $this->totalInList;
-			$sql .= " LIMIT ".$page.",".$this->totalInList."";
-		}else{
-			$sql .= " LIMIT 0,".$this->totalInList;
-		}
 		
 		$list = $this->getList($sql);
 		return $list;
@@ -302,30 +293,6 @@ class cards_model extends generic_model{
 
 	}
 
-
-	public function maximumPages($filters = array()){
-
-		$sql = "SELECT count(*) total FROM cards
-		        WHERE state = 1";
-
-		if(isset($filters['search']) && $filters['search'] != ""){
-
-			$sql .= " AND title LIKE ('%".$filters['search']."%')";
-		}
-
-
-		$list = $this->getList($sql);
-
-		$totalRegisters = $list[0]['total'];
-		$totalPages = ceil($totalRegisters/$this->totalInList);
-		
-		return $totalPages;
-
-	}
-
-
 }
-
-
 
 ?>
