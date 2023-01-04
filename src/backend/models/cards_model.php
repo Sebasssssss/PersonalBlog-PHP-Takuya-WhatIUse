@@ -4,7 +4,7 @@ require_once("models/generic_model.php");
 
 class cards_model extends generic_model{
 
-		protected $title;
+		protected $subtitle;
 
 		protected $cardName;
 
@@ -20,8 +20,8 @@ class cards_model extends generic_model{
 
 		protected $id;
 
-	public function getTitle(){
-		return $this->title;
+	public function getSubtitle(){
+		return $this->subtitle;
 	}
 
 	public function getCardName(){
@@ -55,7 +55,7 @@ class cards_model extends generic_model{
 
 	public function constructor($data = array()){
 
-		$this->title 		    = $data['title'];
+		$this->subtitle 		    = $data['subtitle'];
 		$this->cardName 	  = $data['cardName'];
 		$this->description 	= $data['description'];
 		$this->categorie 	  = $data['categorie'];
@@ -75,7 +75,7 @@ class cards_model extends generic_model{
 
 		if(isset($list[0]['id'])){
 
-			$this->title		    = $list[0]['title'];
+			$this->subtitle		    = $list[0]['subtitle'];
 			$this->cardName		  = $list[0]['cardName'];
 			$this->description	= $list[0]['description'];	
 			$this->image1		    = $list[0]['image1'];
@@ -92,7 +92,7 @@ class cards_model extends generic_model{
 
 		$sql = "INSERT INTO cards SET
 
-			title 		  = :title,
+			subtitle 		= :subtitle,
 			cardName 	  = :cardName,
 			description	= :description,
 			categorie 	= :categorie,
@@ -101,7 +101,7 @@ class cards_model extends generic_model{
 			image3		  = :image3";
 
 			$arraySQL = array(
-			"title" 	    => $this->title,
+			"subtitle" 	  => $this->subtitle,
 			"cardName" 	  => $this->cardName,
 			"description"	=> $this->description,
 			"categorie" 	=> $this->categorie,
@@ -130,7 +130,7 @@ class cards_model extends generic_model{
       if($this->image1 != "" && $this->image2 != "" && $this->image3 != ""){
 
         $sql = "UPDATE cards SET
-                title 				= :title,
+                subtitle 			= :subtitle,
                 cardName 	    = :cardName,
                 description 	= :description,
                 categorie 	  = :categorie,
@@ -140,7 +140,7 @@ class cards_model extends generic_model{
               WHERE id = :id;";
 
         $arraySQL = array(
-          "title" 			=> $this->title,
+          "subtitle" 		=> $this->subtitle,
           "cardName" 		=> $this->cardName,
           "description" => $this->description,
           "categorie"		=> $this->categorie,
@@ -154,7 +154,7 @@ class cards_model extends generic_model{
 
         if($this->image1 != ""){
           $sql = "UPDATE cards SET
-                    title 				= :title,
+                    subtitle 			= :subtitle,
                     cardName 	    = :cardName,
                     description 	= :description,
                     categorie 	  = :categorie,
@@ -162,7 +162,7 @@ class cards_model extends generic_model{
                   WHERE id = :id;";
 
           $arraySQL = array(
-            "title" 			=> $this->title,
+            "subtitle" 		=> $this->subtitle,
             "cardName" 		=> $this->cardName,
             "description" => $this->description,
             "categorie"		=> $this->categorie,
@@ -173,7 +173,7 @@ class cards_model extends generic_model{
 
         if($this->image2 != ""){
           $sql = "UPDATE cards SET
-                    title 				= :title,
+                    subtitle 			= :subtitle,
                     cardName 	    = :cardName,
                     description 	= :description,
                     categorie 	  = :categorie,
@@ -181,7 +181,7 @@ class cards_model extends generic_model{
                   WHERE id = :id;";
 
           $arraySQL = array(
-            "title" 			=> $this->title,
+            "subtitle" 		=> $this->subtitle,
             "cardName" 		=> $this->cardName,
             "description" => $this->description,
             "categorie"		=> $this->categorie,
@@ -192,7 +192,7 @@ class cards_model extends generic_model{
 
         if($this->image3 != ""){
           $sql = "UPDATE cards SET
-                    title 				= :title,
+                    subtitle 			= :subtitle,
                     cardName 	    = :cardName,
                     description 	= :description,
                     categorie 	  = :categorie,
@@ -200,7 +200,7 @@ class cards_model extends generic_model{
                   WHERE id = :id;";
 
           $arraySQL = array(
-            "title" 			=> $this->title,
+            "subtitle" 		=> $this->subtitle,
             "cardName" 		=> $this->cardName,
             "description" => $this->description,
             "categorie"		=> $this->categorie,
@@ -213,14 +213,14 @@ class cards_model extends generic_model{
 				
     }else{
       $sql = "UPDATE cards SET
-                title 				= :title,
+                subtitle 			= :subtitle,
                 cardName 	    = :cardName,
                 description 	= :description,
                 categorie 	  = :categorie
               WHERE id = :id;";
 
 			$arraySQL = array(
-				"title" 			=> $this->title,
+				"subtitle" 		=> $this->subtitle,
 				"cardName" 		=> $this->cardName,
 				"description" => $this->description,
 				"categorie"		=> $this->categorie,
@@ -243,7 +243,7 @@ class cards_model extends generic_model{
 
 	public function listCards($filters = array()){
 
-		$sql = "SELECT 	car.title,
+		$sql = "SELECT 	car.subtitle,
 						car.cardName,
 						car.description,
 						car.image1,
@@ -258,7 +258,7 @@ class cards_model extends generic_model{
 
 		if(isset($filters['search']) && $filters['search'] != ""){
 
-				$sql .= " AND title LIKE ('%".$filters['search']."%')";
+				$sql .= " AND cardName LIKE ('%".$filters['search']."%')";
 			}
 		
 		$list = $this->getList($sql);

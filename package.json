@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "postcss ./public/styles.css -o ./css/styles.css", 
+    "build": "postcss ./public/styles.css -o ./css/styles.css",
     "prod": "NODE_ENV=production postcss ./public/styles.css -o ./css/styles.css"
   },
   "keywords": [],

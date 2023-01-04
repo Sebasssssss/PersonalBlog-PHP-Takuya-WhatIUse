@@ -4,7 +4,7 @@ require_once("generic_model.php");
 
 class subpages_model extends generic_model{
 
-	protected $title;
+	protected $subtitle;
 
 	protected $cardName;
 
@@ -20,8 +20,8 @@ class subpages_model extends generic_model{
 
 	protected $id;
 
-	public function getTitle(){
-		return $this->title;
+	public function getSubtitle(){
+		return $this->subtitle;
 	}
 
 	public function getCardName(){
@@ -60,14 +60,14 @@ public function load($id){
 
 		if(isset($list[0]['id'])){
 
-			$this->title		= $list[0]['title'];
-			$this->cardName		= $list[0]['cardName'];
+			$this->subtitle	    = $list[0]['subtitle'];
+			$this->cardName		  = $list[0]['cardName'];
 			$this->description	= $list[0]['description'];	
-			$this->image1		= $list[0]['image1'];
-			$this->image2		= $list[0]['image2'];
-			$this->image3		= $list[0]['image3'];
-			$this->categorie	= $list[0]['categorie'];
-			$this->id			= $list[0]['id'];
+			$this->image1		    = $list[0]['image1'];
+			$this->image2		    = $list[0]['image2'];
+			$this->image3		    = $list[0]['image3'];
+			$this->categorie	  = $list[0]['categorie'];
+			$this->id			      = $list[0]['id'];
 		}
 
 }

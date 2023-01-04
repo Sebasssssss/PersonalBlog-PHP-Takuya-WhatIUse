@@ -25,26 +25,41 @@
     <link rel="icon" href="../frontend/images/bleach.png">
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/global.css">
+    <script is:inline>
+    const theme = (() => {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        return localStorage.getItem('theme')
+      }
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark'
+      }
+      return 'light'
+    })()
+    if (theme === 'light') {
+      document.documentElement.classList.remove('dark')
+    } else {
+      document.documentElement.classList.add('dark')
+    }
+  </script>
   </head>
-  <body class="bg-zinc-900 dark:bg-orange-50 text-zinc-300 dark:text-zinc-900 text-zinc-300 transition-colors duration-500">
+  <body class="dark:bg-zinc-900 bg-orange-50 text-zinc-900 dark:text-zinc-300 transition-colors duration-500">
     <header class="backdrop-blur-md w-full p-2 z-40 fixed">
       <div class="max-w-3xl mx-auto relative h-11">
         <nav class="flex items-center gap-3">
           <a href="index.php" id="myName" class="group text-lg p-2 font-semibold font-mplus inline-flex items-center gap-1.5 text-center tracking-tighter">
-            <svg class="w-5 h-5 -rotate-[20deg] group-hover:rotate-[0] transition-transform" fill="currentColor" version="1.0" viewBox="0 0 64 63">
-              <path d="m8.1 8.9-8.2 9 3.1 6C4.7 27.3 6.4 30 6.9 30c1.7 0 3-2.5 2.1-4-1.4-2.1-1.2-8.4.2-9.8 1.5-1.5 7.8-1.5 9.8.1 4.6 3.6 6.8 12.5 3.8 15.5-1.6 1.6-5.3 1.5-8.7-.3-5.4-2.7-8 2.3-3.9 7.7.8 1.1 3.8 2.1 7.7 2.7 4.1.7 7.5 1.9 9.6 3.6 4.1 3.1 4.8 3.1 8.8.1 2-1.5 5.8-2.9 10-3.6 5.9-1.1 7-1.6 8.2-4.1 2-3.7 1.9-5.6-.3-6.8-1.2-.6-2.5-.5-4.2.5-3.1 1.7-7.2 1.8-8.8.2-3-3-.8-11.9 3.8-15.5 2-1.6 8.3-1.6 9.8-.1 1.4 1.4 1.6 7.7.2 9.8-.9 1.5.4 4 2.1 4 .5 0 2.2-2.7 3.9-6.1l3.1-6-8.2-9L47.8 0H16.2L8.1 8.9zM13 44.2C13 47 19.3 56 21.2 56c.5 0 .8-2.6.6-5.8l-.3-5.7-4.2-.6c-2.4-.3-4.3-.1-4.3.3z"/>
-              <path d="m46.5 44-4 .5-.3 5.7c-.2 3.2.1 5.8.6 5.8 2 0 8.8-10 8-11.8-.2-.4-2.1-.5-4.3-.2zM24 49.4c0 6.2 1.2 9.6 4.1 11.7l2.9 2v-6.3c0-6.1-.1-6.4-3.5-8.6L24 46v3.4zm12.3-1c-3.1 2-3.3 2.4-3.3 8.4v6.3l2.9-2.1c3-2.1 4.8-7.8 3.9-12.7-.3-2-.3-2-3.5.1z"/>
-            </svg>Sebass Rodriguez
+            <svg class="w-5 h-5 -rotate-[25deg] group-hover:-rotate-[8deg] transition-transform" fill="currentColor" version="1.0" viewBox="0 0 256 256">
+            <path d="M157.5 26.9c-4.1 1.9-32.2 28.5-35.6 33.7-2.6 4-2.6 12.8.1 17.1 2.8 4.7 8.9 8.7 18.8 12.4 7.6 2.8 10 3.2 18.9 3.3l10.3.1 3.7-3.8 3.8-3.7.1-14.3c.1-12.8.3-14.9 2.7-21.2 4.2-11.1 3.4-16.1-3.8-22.4-3.1-2.7-4.3-3.1-9.3-3.1-3.4 0-7.3.8-9.7 1.9zm-82 6.3c-10.9 2.3-17.3 18-16.2 39.6.6 12 3.3 22.3 7.6 28.7 2.3 3.4 3.2 4 6.7 4.3 5.5.4 8.3-2 12.7-11.2 2-4.1 5.8-9.9 8.6-12.9 7-7.8 7.5-9 7.4-19.3 0-7.7-.4-10-2.7-15-1.5-3.2-3.7-7-4.9-8.2-4.5-4.9-12.6-7.4-19.2-6zm133.1 45.3c-15.2 6.3-27.5 20.9-25.2 29.7.3 1.3 2.1 3.3 4 4.5 5.9 3.8 8.8 8.5 9.5 15.8.8 7 2.9 10.5 6.6 10.5 4.9 0 15-9.9 21.8-21.5 4.9-8.4 7-16.4 7.1-26.8.1-8.8.1-8.9-3.2-11.8-2.8-2.5-4-2.9-9-2.9-3.7.1-7.8.9-11.6 2.5zM32.1 96.7c-1.8.9-5.5 3.9-8.2 6.6-6.9 7-9.9 16.6-10.6 33.2-.6 13 .3 18.1 3.9 23.5 3.2 4.6 5.1 5.6 8.5 4.4 3.6-1.2 4.9-4.2 6.2-14.2.8-6.5 1.9-9.9 4.7-15 9.3-17 9.4-17.1 9.4-24.4 0-7.2-.8-9.7-4.3-13.6-2.4-2.6-5-2.8-9.6-.5zm88.9.8c-13.1 3.7-32.6 16.9-48.6 32.9-11.8 11.9-18.8 20.6-30 37.2-13 19.3-13.8 21.2-13.9 32.4 0 8.3.3 10.1 2.5 14 1.4 2.4 4.1 5.5 6 6.8 3.1 2.1 4.4 2.3 10.5 2 9.5-.6 16.3-3.5 29.7-12.5 16.1-10.9 41-21.3 50.9-21.3 10.6 0 20.8 7.5 32.4 24 11.2 15.8 22.6 21.8 27.9 14.7 1.8-2.5 2.1-4.2 2.1-13-.1-12-2.1-21-7.3-31.2-4.8-9.7-11.6-27.4-19.2-50.6-5.9-17.9-7.5-21.1-13.7-27.3-8.2-8.4-18.3-11.1-29.3-8.1zm99 49.4c-11.7 3.6-21 14.1-21 23.7 0 4.6.4 5.5 3.1 7.8 2.8 2.4 3.8 2.6 12.2 2.6 6.9 0 10.3-.5 13.5-2 9.7-4.4 15.2-10.8 15.2-17.7 0-10.1-12.1-17.7-23-14.4z"/>
+          </svg>Sebass Rodriguez
           </a>
           <div class="items-center gap-6 hidden md:inline-flex pt-0.5">
             <a href="https://github.com/Sebasssssss/" class="text-md">About Me</a>
             <a href="https://github.com/Sebasssssss/PersonalBlog-PHP-Based-on-Takuya.git" class="inline-flex items-center text-md gap-1">
-              <svg class="w-3.5 h-3.5" fill="currentColor" version="1.0" width="85.333" height="85.333" viewBox="0 0 64 64">
+              <svg class="w-5 h-5 -rotate-[25deg] group-hover:-rotate-[8deg] transition-transform" fill="currentColor" version="1.0" viewBox="0 0 256 256">
                 <path d="M20.7 3C10.8 6.8 3.3 15.5 1 25.9c-3.1 13.5 4 28.9 16.2 35.2 5.4 2.8 6.8 2.5 6.8-1.4 0-3.1-.2-3.3-3.6-3.4-3.5-.1-7.4-2.6-7.4-4.8 0-.7-.9-2-2-3s-2-2.2-2-2.7c0-1.7 2.1-.7 5.9 2.7 4.5 4.1 7.3 4.4 9.6 1.2 1.4-2.1 1.4-2.3-.7-3.1-7.4-2.7-9-3.8-10.4-7.1-1.7-4.1-1.9-12.6-.3-14.2.7-.7 1.3-3.2 1.4-5.7.1-2.5.5-4.9.9-5.3.4-.4 2.1-.1 3.9.6 4.7 2 19.3 2.1 24.5.3 2.3-.8 4.5-1.2 4.9-.8.4.3.7 2.7.8 5.2.1 2.5.7 5 1.4 5.7 1.6 1.6 1.4 10.1-.3 14.2-1.4 3.4-4.7 5.6-9.9 6.9-2.3.5-2.6.9-1.7 2.6.5 1 1 4.6 1 7.9 0 6.9.7 7.3 6.8 4.2 8.6-4.4 15.7-14.8 16.9-24.9 1.1-10-4.2-22.6-12.1-28.7C43.2 1.1 30.3-.8 20.7 3z"/>
               </svg>Source
             </a>
           </div>
-          <div class="text-xl list-none flex flex-col absolute right-12 border border-orange-50 dark:border-slate-800/70 rounded-md overflow-hidden">
+          <div class="text-xl list-none flex flex-col absolute right-12 border dark:border-orange-50 border-slate-800/70 rounded-md overflow-hidden">
             <div id="moon" class="w-full h-full absolute bg-[#fbd28c] hover:bg-[#f6ad55] py-2 px-2.5 cursor-pointer transition-transform duration-500">
               <svg class="w-4 h-5 fill-zinc-700" version="1.0" viewBox="0 0 128 128">
                 <path d="M60.2 1.6C58.2 2.9 58 4 58 11c0 8.8 1.2 11 6 11s6-2.2 6-11c0-7-.2-8.1-2.2-9.4C66.6.7 64.9 0 64 0c-.9 0-2.6.7-3.8 1.6zM19 19c-3.3 3.3-2.5 6.1 3.3 11.8 5.6 5.5 9.2 6.6 12.1 3.6 3.1-3 2-6.6-3.7-12.2C25 16.5 22.2 15.8 19 19zM97.2 22.3c-5.5 5.6-6.6 9.2-3.6 12.1 3 3.1 6.6 2 12.2-3.7 5.7-5.7 6.4-8.5 3.2-11.7-3.3-3.3-6.1-2.5-11.8 3.3zM53.6 33.9c-10.4 4.2-16.7 10.8-20.2 21.3-3.3 10 .2 23.3 8.1 31.3 12.2 12.1 32.8 12.1 45 0 12.1-12.2 12.1-32.8 0-45-8.4-8.3-22.7-11.6-32.9-7.6zM1.6 60.2c-2 2.8-2 4.8 0 7.6C2.9 69.8 4 70 11 70c8.8 0 11-1.2 11-6s-2.2-6-11-6c-7 0-8.1.2-9.4 2.2zM107.6 59.5c-.9.9-1.6 2.9-1.6 4.5 0 5 2.2 6.1 11.3 5.8 7.7-.3 8.2-.4 9.7-3.1 1.3-2.4 1.3-3 0-5.5-1.5-2.6-2-2.7-9.7-3-6.4-.2-8.4.1-9.7 1.3zM22.2 97.3c-5.7 5.7-6.4 8.5-3.2 11.7 3.3 3.3 6.1 2.5 11.8-3.3 5.5-5.6 6.6-9.2 3.6-12.1-3-3.1-6.6-2-12.2 3.7zM93.6 93.6c-3.1 3-2 6.6 3.7 12.2 5.7 5.7 8.5 6.4 11.7 3.2 3.3-3.3 2.5-6.1-3.3-11.8-5.6-5.5-9.2-6.6-12.1-3.6zM59.5 107.6c-1.2 1.3-1.5 3.3-1.3 9.7.3 7.7.4 8.2 3.1 9.7 2.4 1.3 3 1.3 5.5 0 2.6-1.5 2.7-2 3-9.7.3-9.1-.8-11.3-5.8-11.3-1.6 0-3.6.7-4.5 1.6z"/>
@@ -57,16 +72,16 @@
             </div>
           </div>
           <div @click.away="open = false" class="absolute right-0" x-data="{ open: false }">
-            <button @click="open = !open" class="rounded-md border dark:border-zinc-400 border-zinc-700 py-2 text-sm shadow-sm dark:hover:bg-orange-200 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
+            <button @click="open = !open" class="rounded-md border border-zinc-400 dark:border-zinc-700 py-2 text-sm shadow-sm hover:bg-orange-200 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
               <svg class="w-[37px] h-5" fill="currentColor" version="1.0" viewBox="0 0 128 128">
                 <path d="M24.1 36.6c-3.9 3.3-4.2 8-.8 11.2C25.6 50 25.9 50 64.6 50c30.8-.1 39.3-.3 40.7-1.4 1.2-.9 1.7-2.7 1.7-6.3 0-8.5 1.2-8.3-42.4-8.3H27.2l-3.1 2.6zm-.5 22c-3.4 3.4-3.4 7.7-.1 10.9l2.4 2.5h38.3c44.2 0 42.8.3 42.8-8s1.4-8-42.6-8H26.3l-2.7 2.6zm-.1 21.9c-3.4 3.3-3.3 7.4.3 10.8l2.8 2.7h37.7c43.7 0 42.7.2 42.7-8 0-8.3 1.8-8-42.4-8H25.9l-2.4 2.5z"/>
               </svg>
             </button>
-            <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-56 mt-2 origin-top-right rounded-md shadow-lg flex flex-col border dark:border-zinc-400 border-zinc-700 dark:bg-orange-50 bg-zinc-800 px-2 py-1">
+            <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-56 mt-2 origin-top-right rounded-md shadow-lg flex flex-col border border-zinc-400 dark:border-zinc-700 bg-orange-50 dark:bg-zinc-800 px-2 py-1">
               <h1 class="py-2 mx-1 text-left text-xs uppercase tracking-tighter font-bold">Categories</h1>
-              <a href="index.php?r=cards" class="w-full text-left dark:hover:bg-orange-200 hover:bg-zinc-700 px-2 py-2 rounded text-sm">Cards</a>
-              <a href="index.php?r=aboutme" class="w-full text-left dark:hover:bg-orange-200 hover:bg-zinc-700 px-2 py-2 rounded text-sm">About Me</a>
-              <a href="logout.php" class="w-full text-left dark:hover:bg-orange-200 hover:bg-zinc-700 px-2 py-2 rounded text-sm inline-flex items-center gap-0.5">Log out
+              <a href="index.php?r=cards" class="w-full text-left hover:bg-orange-200 dark:hover:bg-zinc-700 px-2 py-2 rounded text-sm">Cards</a>
+              <a href="index.php?r=aboutme" class="w-full text-left hover:bg-orange-200 dark:hover:bg-zinc-700 px-2 py-2 rounded text-sm">About Me</a>
+              <a href="logout.php" class="w-full text-left hover:bg-orange-200 dark:hover:bg-zinc-700 px-2 py-2 rounded text-sm inline-flex items-center gap-0.5">Log out
                 <svg class="w-5 h-5" fill="currentColor" version="1.0" viewBox="0 0 128 128">
                   <path d="M61.2 23.6C59 25.1 59 25.4 59 49.5c0 24.1 0 24.4 2.2 25.9 3.2 2.3 5.4 2 7.7-1 2-2.5 2.1-3.9 2.1-25.1V26.9l-2.5-2.4c-2.8-2.9-4.2-3.1-7.3-.9z"/>
                   <path d="M37.3 38.4c-4.2 3.6-9 12.2-10.9 19.6-2.3 9-1.4 16.6 3.1 25.7 14.5 29.5 55 29.4 70-.3 2.8-5.5 3-6.7 3-16.9 0-10-.3-11.5-2.7-16.6-5.4-11-12.5-16.2-17-12.7-3.3 2.6-3 5.3.8 9.9 7.9 9.5 9.9 20.4 5.4 30.7C85 87.1 74.5 94 64.5 94c-14.2 0-26.8-12.4-26.9-26.5 0-7.8 1.5-12.2 7-19.2 4.6-5.9 5-8.4 1.6-11.1-2.4-1.9-5.8-1.4-8.9 1.2z"/>

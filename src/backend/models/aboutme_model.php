@@ -55,19 +55,19 @@ class aboutme_model extends generic_model{
 
 		public function load($id){
 
-	  $sql = "SELECT * FROM aboutme WHERE id = :id";
-	  $arraySQL = array("id" => $id);
-	  $list = $this->getList($sql, $arraySQL);
+      $sql = "SELECT * FROM aboutme WHERE id = :id";
+      $arraySQL = array("id" => $id);
+      $list = $this->getList($sql, $arraySQL);
 
-	  if(isset($list[0]['id'])){
+      if(isset($list[0]['id'])){
 
-		$this->name				= $list[0]['name'];
-		$this->description		= $list[0]['description'];	
-		$this->profilePicture	= $list[0]['profilePicture'];
-		$this->dateOfBirth		= $list[0]['dateOfBirth'];
-		$this->location			= $list[0]['location'];
-		$this->id				= $list[0]['id'];
-	  }
+        $this->name				= $list[0]['name'];
+        $this->description		= $list[0]['description'];	
+        $this->profilePicture	= $list[0]['profilePicture'];
+        $this->dateOfBirth		= $list[0]['dateOfBirth'];
+        $this->location			= $list[0]['location'];
+        $this->id				= $list[0]['id'];
+      }
 
 		}  
 
