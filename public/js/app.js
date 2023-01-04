@@ -12,7 +12,7 @@ const iconToggle = () => {
 const themeCheck = () => {
     if(userTheme === "dark" || (!userTheme && systemTheme)){
 	document.documentElement.classList.add("dark");
-    moonIcon.classList.add("-translate-y-[100%]");
+    moonIcon.classList.add("-translate-y-[200%]");
 	return;
     }
     sunIcon.classList.add("translate-y-[100%]");

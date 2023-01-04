@@ -18,7 +18,10 @@ if(isset($_POST["action"]) && $_POST['action'] == "editProfile" ){
 
   $file = $objAboutme->uploadImage($_FILES['profilePicture'], "512", "512");
   if($file){
+    $id = $_POST['txtId'];
+    $objAboutme->load($id);
     
+    unlink('files/images/'.$objAboutme->getProfilePicture());
     $data['profilePicture'] 	= $file;
     
   }else{
@@ -47,7 +50,7 @@ if(isset($_POST["action"]) && $_POST['action'] == "editProfile" ){
 <?php
 foreach($profileData as $profile){
 ?>
-    <img src="files/images/<?=$profile['profilePicture']?>" class="rounded-full w-24 mx-auto z-20 border dark:border-slate-300 border-slate-700 opacity-90 h-24 object-cover">
+    <img src="files/images/<?=$profile['profilePicture']?>" class="rounded-full w-24 mx-auto z-20 border border-slate-300 dark:border-slate-700 opacity-90 h-24 object-cover">
     <h1 class="z-20 text-lg"><?=$profile['name']?></h1>
 <?php
 }
@@ -59,21 +62,21 @@ foreach($profileData as $profile){
 	if(isset($_GET['action']) && $_GET['action'] == "edit" && isset($_GET['aboutme']) && $_GET['aboutme'] != ""  ){
 		$objAboutme->load($_GET['aboutme']);
 ?>
-<div class="text-center mx-auto w-96 sm:w-max dark:bg-orange-100 bg-neutral-900 border dark:border-slate-300 border-slate-700 z-30 rounded-lg shadow flex flex-col justify-evenly text-center items-center p-5 transition ease-in-out duration-500"> 
+<div class="text-center mx-auto w-96 sm:w-max bg-orange-100 dark:bg-neutral-900 border border-slate-300 dark:border-slate-700 z-30 rounded-lg shadow flex flex-col justify-evenly text-center items-center p-5 transition ease-in-out duration-500"> 
 	<h3 class="font-semibold sm:text-xl font-mplus">Let's edit your profile!</h3>
 	<form action="index.php?r=<?=$routePage?>" enctype="multipart/form-data" method="post">
 		  <div class="p-5 text-black grid grid-cols-1 sm:grid-cols-2 gap-5">
-			  <input type="file" name="profilePicture" value="<?=$objAboutme->getProfilePicture()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all block file:w-18 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100">
-        <input placeholder="Name" name="txtName" value="<?=$objAboutme->getName()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
-        <input placeholder="Date of Birth" name="txtDateOfBirth" type="date" value="<?=$objAboutme->getDateOfBirth()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
-        <input placeholder="Location" name="txtLocation" type="txt" value="<?=$objAboutme->getLocation()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
+			  <input type="file" name="profilePicture" value="<?=$objAboutme->getProfilePicture()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all block file:w-18 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100">
+        <input placeholder="Name" name="txtName" value="<?=$objAboutme->getName()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
+        <input placeholder="Date of Birth" name="txtDateOfBirth" type="date" value="<?=$objAboutme->getDateOfBirth()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
+        <input placeholder="Location" name="txtLocation" type="txt" value="<?=$objAboutme->getLocation()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
         <input type="hidden" name="txtId" value="<?=$objAboutme->getId()?>">
       </div>
       <div class="px-5">
-        <textarea placeholder="Description" name="txtDescription" rows="4" class="rounded-lg p-2 w-full h-24 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all resize-none text-black"><?=$objAboutme->getDescription()?></textarea>
+        <textarea placeholder="Description" name="txtDescription" rows="4" class="rounded-lg p-2 w-full h-24 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all resize-none text-black"><?=$objAboutme->getDescription()?></textarea>
       </div>
-          <button type="submit" name="action" value="editProfile" class="border dark:bg-orange-200 bg-orange-900 border-orange-200 border-orange-700 text-center rounded px-4 py-2 font-semibold text-sm shadow">Send!</button>
-          <button type="submit" value="cancel" class="border dark:bg-orange-200 bg-orange-900 border-orange-200 border-orange-700 text-center rounded px-4 py-2 font-semibold text-sm shadow">Cancel</button>	
+          <button type="submit" name="action" value="editProfile" class="border bg-orange-200 dark:bg-orange-900 border-orange-200 dark:border-orange-700 text-center rounded px-4 py-2 font-semibold text-sm shadow">Send!</button>
+          <button type="submit" value="cancel" class="border bg-orange-200 dark:bg-orange-900 border-orange-200 dark:border-orange-700 text-center rounded px-4 py-2 font-semibold text-sm shadow">Cancel</button>	
   </form>
 </div>
 <?php
@@ -106,16 +109,16 @@ foreach($profileData as $profile){
     foreach($profileData as $profile){
 ?>
   <div class="w-full text-right">
-    <a href="index.php?r=<?=$routePage?>&action=edit&aboutme=<?=$profile['id']?>" class="p-2 dark:bg-orange-200 bg-zinc-800 rounded transition duration-500 shadow-md inline-flex items-center gap-2"><span class="uppercase">Edit profile</span>
+    <a href="index.php?r=<?=$routePage?>&action=edit&aboutme=<?=$profile['id']?>" class="p-2 bg-orange-200 dark:bg-zinc-800 rounded transition duration-500 shadow-md inline-flex items-center gap-2"><span class="uppercase">Edit profile</span>
       <svg class="w-4 h-4" fill="currentColor" version="1.0" viewBox="0 0 256 256">
         <path d="M178.5 42.4c-1.6.8-7 5.4-11.8 10.3l-8.8 8.9 18.1 18 18 17.9 10-10c9.3-9.4 10-10.3 10-14 0-3.8-.7-4.7-13.7-17.7-7.9-7.9-14.9-13.9-16.3-14.2-1.4-.3-3.8.1-5.5.8zm-84.3 82.9L41 178.5V215h35.5l53.5-53.5 53.5-53.5-18-18-18-18-53.3 53.3z"/>
       </svg>
     </a>
   </div>
 	<div class="border-b border-opacity-10 w-max border-orange-400 hover:border-opacity-20 cursor-pointer transition-colors duration-600">
-		<h1 id="categorysText" class="group dark:text-orange-700 text-orange-500 font-mplus inline-flex items-center">
+		<h1 id="categorysText" class="group text-orange-700 dark:text-orange-500 font-mplus inline-flex items-center">
       <a href="index.php">
-        <svg class="dark:fill-zinc-900 fill-zinc-300 group-hover:translate-x-[2px] w-5 h-3 pr-2 opacity-40 lg:hover:opacity-70 transition ease-in-out duration-300" version="1.0" viewBox="0 0 504 512">
+        <svg class="fill-zinc-900 dark:fill-zinc-300 group-hover:translate-x-[2px] w-5 h-3 pr-2 opacity-40 lg:hover:opacity-70 transition ease-in-out duration-300" version="1.0" viewBox="0 0 504 512">
           <path d="M240.3 1.4c-9.2 3-16.7 9.8-20.9 19.1-3.6 7.9-3.8 18.2-.4 27 2.1 5.8 6.3 10.1 102.8 106.7l100.6 100.7-16.4 16.8c-9.1 9.2-53.6 54.3-99 100.1s-83.7 85.2-85.3 87.4c-8.7 13.1-6.3 32.3 5.5 43.4 7.3 6.8 12.6 8.9 22.8 8.9 15.1 0 10.5 3.9 90.8-77.3 141.3-143 156-158.2 159-164.2 2.4-4.8 2.7-6.7 2.7-15s-.3-10.2-2.7-15c-2.3-4.6-21.4-24.3-116.3-119.7C257.8-6.1 265.6 1 251.7.4c-4.3-.2-8.9.2-11.4 1z"/>
           <path d="M28.1 9.1C13.2 12 2.1 24.9 1.2 40.3c-.5 8.1 1 14.7 4.6 20.5 1.5 2.3 47.1 46.8 101.4 98.9 54.4 52.1 98.8 95 98.8 95.4 0 .4-40.8 40.2-90.8 88.5C5.6 449.6 7 448.2 4 454.5c-3.7 7.6-4 19.2-.8 27.2 5.7 14 16.7 21.5 31.5 21.5 12.6 0 15.1-1.6 43.8-30 40-39.6 66.8-65.7 117.5-114.7 91.4-88.2 88.8-85.4 91.2-98.3 1.5-7.8-.8-17.6-5.5-24.3-3.5-5-3.2-4.7-136.4-133.3-77-74.3-91.2-87.6-96.5-90.3C41.9 8.8 35 7.7 28.1 9.1z"/>
         </svg>
@@ -151,9 +154,9 @@ foreach($profileData as $profile){
 		foreach($listCards as $cards){
 	?>
 		<a href="#" class="w-[345px] mb-4 text-center">
-			<img src="http://localhost/What-install/src/backend/files/images/<?=$cards['image1']?>" class="w-full border dark:border-slate-300 border-slate-700 rounded-xl h-44 object-cover">
+			<img src="http://localhost/What-install/src/backend/files/images/<?=$cards['image1']?>" class="w-full border border-slate-300 dark:border-slate-700 rounded-xl h-44 object-cover">
 			<h6 class="text-xl mt-3 font-semibold font-mplus"><?=$cards['cardName']?></h6>
-			<h1 class="opacity-70"><?=$cards['title']?></h1>
+			<h1 class="opacity-70"><?=$cards['subtitle']?></h1>
 		</a>
 	<?php
 	} 

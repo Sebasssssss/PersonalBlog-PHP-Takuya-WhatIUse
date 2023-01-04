@@ -14,7 +14,7 @@ if(isset($_POST['action']) && $_POST['action'] == "uploadingData"){
 	if($file1 != "" && $file2 != "" && $file3 != ""){
 
 		$data = array();
-		$data['title']			  = isset($_POST['txtTitle'])?$_POST['txtTitle']:"";
+		$data['subtitle']			= isset($_POST['txtSubtitle'])?$_POST['txtSubtitle']:"";
 		$data['cardName']	    = isset($_POST['txtCardName'])?$_POST['txtCardName']:"";
 		$data['description']	= isset($_POST['txtDescription'])?$_POST['txtDescription']:"";
 		$data['categorie']		= isset($_POST['txtCategorie'])?$_POST['txtCategorie']:"";
@@ -50,7 +50,7 @@ if(isset($_POST["action"]) && $_POST['action'] == "delete" && isset($_POST["id"]
 	if(isset($_POST["action"]) && $_POST['action'] == "edit" ){
 			
 			$data = array();
-			$data['title']			  = isset($_POST['txtTitle'])?$_POST['txtTitle']:"";
+			$data['subtitle']			= isset($_POST['txtSubtitle'])?$_POST['txtSubtitle']:"";
 			$data['cardName']	    = isset($_POST['txtCardName'])?$_POST['txtCardName']:"";
 			$data['description']	= isset($_POST['txtDescription'])?$_POST['txtDescription']:"";
 			$data['categorie']		= isset($_POST['txtCategorie'])?$_POST['txtCategorie']:"";
@@ -114,20 +114,20 @@ if(isset($_POST["action"]) && $_POST['action'] == "delete" && isset($_POST["id"]
   </div>
 </main>
   <div id="modal-container" class="w-full h-screen z-40 fixed left-0 top-0 justify-center items-center flex backdrop-blur-sm opacity-0 invisible">
-    <div id="modal-content" class="relative dark:bg-orange-100 bg-neutral-900 border dark:border-slate-300 border-slate-700 w-max sm:w-[700px] h-[600px] sm:h-[460px] z-30 rounded-lg shadow-2xl flex flex-col justify-evenly text-center items-center translate-y-0 translate-y-[-200%] transition-transform duration-300">
+    <div id="modal-content" class="relative bg-orange-100 dark:bg-neutral-900 border border-slate-300 dark:border-slate-700 w-max sm:w-[700px] h-[600px] sm:h-[460px] z-30 rounded-lg shadow-2xl flex flex-col justify-evenly text-center items-center translate-y-0 translate-y-[-200%] transition-transform duration-300">
       <svg id="close" class="w-3 h-3 ml-[9px] hover:opacity-90 absolute top-4 right-4 cursor-pointer" fill="currentColor" xml:space="preserve" viewBox="0 0 121.31 122.876">
         <path fill-rule="evenodd" d="M90.914 5.296c6.927-7.034 18.188-7.065 25.154-.068 6.961 6.995 6.991 18.369.068 25.397L85.743 61.452l30.425 30.855c6.866 6.978 6.773 18.28-.208 25.247-6.983 6.964-18.21 6.946-25.074-.031L60.669 86.881 30.395 117.58c-6.927 7.034-18.188 7.065-25.154.068-6.961-6.995-6.992-18.369-.068-25.397l30.393-30.827L5.142 30.568c-6.867-6.978-6.773-18.28.208-25.247 6.983-6.963 18.21-6.946 25.074.031l30.217 30.643L90.914 5.296z" clip-rule="evenodd"/>
       </svg>
       <h1 class="text-lg font-semibold">Let's add some data!</h1>
       <form action="index.php?r=<?=$routePage?>" enctype="multipart/form-data" method="post">
         <div class="p-5 text-black grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <input placeholder="Title" name="txtTitle" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
-          <input placeholder="Card Name" name="txtCardName" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
-          <input name="image1" type="file" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all block file:w-18 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100">
-          <input name="image2" type="file" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all block file:w-18 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-900 hover:file:bg-violet-100">
-          <input name="image3" type="file" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all block file:w-18 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-800 hover:file:bg-violet-100">
+          <input placeholder="Card Name" name="txtCardName" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
+          <input placeholder="Subtitle" name="txtSubtitle" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
+          <input name="image1" type="file" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all block file:w-18 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100">
+          <input name="image2" type="file" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all block file:w-18 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-900 hover:file:bg-violet-100">
+          <input name="image3" type="file" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all block file:w-18 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-800 hover:file:bg-violet-100">
 
-          <select name="txtCategorie" value="<?=$listCategories['id']?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
+          <select name="txtCategorie" value="<?=$listCategories['id']?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
             <option disabled selected>Choose a categorie</option>
 
             <?php
@@ -141,9 +141,9 @@ if(isset($_POST["action"]) && $_POST['action'] == "delete" && isset($_POST["id"]
           </select>
         </div>
         <div class="px-5 pb-2">
-          <textarea placeholder="Description" name="txtDescription" rows="4" class="rounded-lg p-2 w-full h-24 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all resize-none text-black"><?=$objCards->getDescription()?></textarea>
+          <textarea placeholder="Description" name="txtDescription" rows="4" class="rounded-lg p-2 w-full h-24 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all resize-none text-black"><?=$objCards->getDescription()?></textarea>
         </div>
-        <button name="action" value="uploadingData" type="sumbit" class="rounded-lg shadow p-2 w-36 h-10 outline-0 border border-700 bg-amber-700 dark:hover:bg-orange-200 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">Send Form!</button>
+        <button name="action" value="uploadingData" type="sumbit" class="rounded-lg shadow p-2 w-36 h-10 outline-0 border border-700 bg-amber-700 hover:bg-orange-200 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">Send Form!</button>
       </form>
     </div>
   </div>
@@ -188,7 +188,7 @@ if(isset($_POST["action"]) && $_POST['action'] == "delete" && isset($_POST["id"]
 
 <div class="inline-flex items-center text-center w-full justify-center mx-auto mt-20 py-2 gap-2">
   <a class="cursor-pointer group" href="index.php?r=<?=$routePage?>">
-    <div class="dark:bg-orange-100 bg-amber-700 border dark:border-orange-200 border-amber-900 text-center rounded-lg px-1 py-1 shadow-md">
+    <div class="bg-orange-100 dark:bg-amber-700 border border-orange-200 dark:border-amber-900 text-center rounded-lg px-1 py-1 shadow-md">
       <svg class="group-hover:rotate-[360deg] w-6 h-6 transition-transform duration-500" fill="currentColor" version="1.0" viewBox="0 0 128 128">
         <path d="M53 24.6c-7.7 2.1-12.8 5.4-19.3 12.3C26 45.3 23.6 51.7 23.6 64c0 7.5.5 10.7 2.3 15.3 2.6 6.7 11 16.3 17.6 20.1 10.2 6 24.2 7 35.8 2.6 11.1-4.2 23.5-18.8 25.3-29.7.5-3.4.2-4.5-1.5-6.2-3.9-3.9-8.5-2.1-10.1 4.2-1.5 5.4-7 13.8-11.3 17.1-7.9 6-20.3 7.4-29.2 3.2-7.3-3.4-11-6.9-14.4-13.8C28.4 57.5 42.3 35 64 35c5 0 7.8.6 12 2.7l5.5 2.7-4.8.6c-5 .6-6.7 2-6.7 5.6C70 51 72.8 52 84.7 52c14.4 0 14.3.1 14.3-14.7 0-9.4-.3-11.2-1.8-12.6-3.5-3.2-8.2-1.5-9.7 3.3l-.7 2.1-3.2-2C76 23.3 63.1 21.9 53 24.6z"/>
       </svg>
@@ -200,14 +200,14 @@ if(isset($_POST["action"]) && $_POST['action'] == "delete" && isset($_POST["id"]
       <path d="M41.5 9.4c-7.2 2.3-12.8 5.8-18.5 11.5C5.7 38.1 6.2 65.4 24 82.4 37.7 95.5 55.3 98.2 72.9 90l6.5-3.1L96 103.5l16.5 16.5 3.8-3.7 3.7-3.8L103.5 96 87 79.5l3-4.5c4.2-6.3 7-15.9 7-24.1C97 32 84.8 15.5 66.7 9.8c-6.8-2.1-19.2-2.3-25.2-.4zm28.8 7.4c7.7 3.8 14.8 11.1 18.5 19 2.3 4.9 2.7 7 2.7 15.2 0 8.6-.3 10.1-3.2 16.2-16.1 34-65.6 27.2-72.3-10-3.4-18.8 9.5-38.5 28.4-43.3 1.7-.4 6.8-.7 11.3-.5 6.8.2 9.2.8 14.6 3.4z"/>
     </svg>
   </form>
-  <a href="#" id="modalOpen" class="dark:bg-orange-100 bg-amber-700 border-2 dark:border-orange-200 border-amber-900 text-center rounded-lg px-4 py-1 shadow-md">Add data!</a>
+  <a href="#" id="modalOpen" class="bg-orange-100 dark:bg-amber-700 border-2 border-orange-200 dark:border-amber-900 text-center rounded-lg px-4 py-1 shadow-md">Add data!</a>
 </div>
 
 
 <?PHP 
   if(isset($_GET['action']) && $_GET['action'] == "delete" && isset($_GET['cards']) && $_GET['cards'] != ""  ){
 ?>
-<div class="text-center h-32 w-max mx-auto border rounded-lg p-2 my-1 dark:bg-orange-100 bg-zinc-800 dark:border-orange-200 border-zinc-700 shadow-lg transition-colors duration-500">
+<div class="text-center h-32 w-max mx-auto border rounded-lg p-2 my-1 bg-orange-100 dark:bg-zinc-800 border-orange-200 dark:border-zinc-700 shadow-lg transition-colors duration-500">
   <form action="index.php?r=<?=$routePage?>" method="POST">
       <div class="py-2 text-md">
           <h3 class="font-semibold">Delete data</h3>
@@ -216,11 +216,11 @@ if(isset($_POST["action"]) && $_POST['action'] == "delete" && isset($_POST["id"]
       <input type="hidden" name="id" value="<?=$_GET['cards']?>">
       <div class="inline-flex items-center gap-2">
         <button type="submit" name="action" value="delete">
-          <svg class="w-8 h-8 border dark:bg-orange-200 bg-orange-900 dark:border-orange-300 border-orange-700 rounded" fill="currentColor" version="1.0" viewBox="0 0 256 256">
+          <svg class="w-8 h-8 border bg-orange-200 dark:bg-orange-900 border-orange-300 dark:border-orange-700 rounded" fill="currentColor" version="1.0" viewBox="0 0 256 256">
             <path d="M54.1 116.3c-1.9.6-4.9 2.6-6.8 4.4-2.6 2.7-3.3 4.2-3.3 7.3 0 4.9 4.6 10 10.7 11.8 5.8 1.7 140.8 1.7 146.6 0 6.1-1.8 10.7-6.9 10.7-11.8s-4.6-10-10.7-11.8c-5.4-1.6-142.1-1.5-147.2.1z"/>
           </svg>
         </button>
-        <button type="submit" value="cancel" class="w-8 h-8 border dark:bg-orange-200 bg-orange-900 dark:border-orange-300 border-orange-700 rounded">
+        <button type="submit" value="cancel" class="w-8 h-8 border bg-orange-200 dark:bg-orange-900 border-orange-300 dark:border-orange-700 rounded">
           <svg class="w-3 h-3 ml-[9px]" fill="currentColor" xml:space="preserve" viewBox="0 0 121.31 122.876">
             <path fill-rule="evenodd" d="M90.914 5.296c6.927-7.034 18.188-7.065 25.154-.068 6.961 6.995 6.991 18.369.068 25.397L85.743 61.452l30.425 30.855c6.866 6.978 6.773 18.28-.208 25.247-6.983 6.964-18.21 6.946-25.074-.031L60.669 86.881 30.395 117.58c-6.927 7.034-18.188 7.065-25.154.068-6.961-6.995-6.992-18.369-.068-25.397l30.393-30.827L5.142 30.568c-6.867-6.978-6.773-18.28.208-25.247 6.983-6.963 18.21-6.946 25.074.031l30.217 30.643L90.914 5.296z" clip-rule="evenodd"/>
           </svg>
@@ -239,17 +239,17 @@ if(isset($_POST["action"]) && $_POST['action'] == "delete" && isset($_POST["id"]
     $objCards->load($_GET['cards']);
 ?>
 
-<div class="text-center mx-auto w-[350px] sm:w-max dark:bg-orange-100 bg-neutral-900 border dark:border-slate-300 border-slate-700 rounded-lg shadow-2xl flex flex-col justify-evenly items-center transition ease-in-out duration-500"> 
+<div class="text-center mx-auto w-[350px] sm:w-max bg-orange-100 dark:bg-neutral-900 border border-slate-300 dark:border-slate-700 rounded-lg shadow-2xl flex flex-col justify-evenly items-center transition ease-in-out duration-500"> 
   <h3 class="font-semibold sm:text-xl">Edit Card</h3>
   <form action="index.php?r=<?=$routePage?>" enctype="multipart/form-data" method="post">
     <div class="p-5 text-black grid grid-cols-1 md:grid-cols-2 gap-5">
-      <input placeholder="Title" name="txtTitle" value="<?=$objCards->getTitle()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
-      <input placeholder="Card Name" name="txtCardName" value="<?=$objCards->getCardName()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
-      <input placeholder="Image" type="file" name="image1" value="<?=$objCards->getImage1()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all block file:w-18 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100">
-      <input placeholder="Image" type="file" name="image2" value="<?=$objCards->getImage2()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all block file:w-18 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100">
-      <input placeholder="Image" type="file" name="image3" value="<?=$objCards->getImage3()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all block file:w-18 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100">
+      <input placeholder="Card Name" name="txtCardName" value="<?=$objCards->getCardName()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
+      <input placeholder="Subtitle" name="txtSubtitle" value="<?=$objCards->getSubtitle()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
+      <input placeholder="Image" type="file" name="image1" value="<?=$objCards->getImage1()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all block file:w-18 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100">
+      <input placeholder="Image" type="file" name="image2" value="<?=$objCards->getImage2()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all block file:w-18 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100">
+      <input placeholder="Image" type="file" name="image3" value="<?=$objCards->getImage3()?>" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all block file:w-18 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100">
       <input name="txtId" type="hidden" value="<?=$objCards->getId()?>">
-      <select name="txtCategorie" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
+      <select name="txtCategorie" class="rounded-lg p-2 w-full h-10 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all">
           <option disabled selected>Choose a categorie</option>
           <?php
             foreach($listCategories as $categories){
@@ -261,23 +261,23 @@ if(isset($_POST["action"]) && $_POST['action'] == "delete" && isset($_POST["id"]
       </select>
     </div>
     <div class="px-5">
-      <textarea placeholder="Description" name="txtDescription" rows="4" class="rounded-lg p-2 w-full h-24 outline-0 border border-700 bg-white dark:hover:bg-orange-200 hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all resize-none text-black"><?=$objCards->getDescription()?></textarea>
+      <textarea placeholder="Description" name="txtDescription" rows="4" class="rounded-lg p-2 w-full h-24 outline-0 border border-700 bg-white hover:bg-orange-200 dark:hover:bg-zinc-800 hover:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all resize-none text-black"><?=$objCards->getDescription()?></textarea>
     </div>
-      <button type="submit" name="action" value="edit" class="darkbg-orange-100 :bg-slate-900 text-center rounded px-4 py-2 font-semibold text-sm">Send!</button>
-      <button type="submit" value="cancel" class="dark:bg-orange-100 bg-slate-900 text-center rounded px-4 py-2 font-semibold text-sm">Cancel</button>	
+      <button type="submit" name="action" value="edit" class="bg-orange-100 dark:bg-slate-900 text-center rounded px-4 py-2 font-semibold text-sm">Send!</button>
+      <button type="submit" value="cancel" class="bg-orange-100 dark:bg-slate-900 text-center rounded px-4 py-2 font-semibold text-sm">Cancel</button>	
   </form>
 </div>
 <?php
   }
 ?>
 
-<div class="overflow-y-scroll overflow-x-scroll sm:overflow-x-visible h-[392px] max-w-4xl py-2 mx-auto rounded-lg border dark:border-orange-100 border-orange-800 dark:shadow-md shadow-lg shadow-orange-900 dark:shadow-zinc-900">
+<div class="overflow-y-scroll overflow-x-scroll sm:overflow-x-visible h-[450px] max-w-4xl py-2 mx-auto rounded-lg border border-orange-100 dark:border-orange-800 shadow-md dark:shadow-lg shadow-orange-900 dark:shadow-zinc-900">
   <table class="container text-center font-mplus max-w-4xl">
-    <thead class="sticky top-[-10px] z-30">
-        <tr class="uppercase font-semibold text-xs dark:bg-orange-100 bg-orange-900 transition duration-500">
+    <thead class="sticky top-[-10px] z-30 shadow-md shadow-zinc-700">
+        <tr class="uppercase font-semibold text-xs bg-orange-100 dark:bg-orange-900 transition duration-500">
           <th class="py-5">images</th>
-          <th>Title</th>
-          <th>card Name</th>
+          <th>Card Name</th>
+          <th>subtitle</th>
           <th>description</th>
           <th>categorie</th>
           <th>Buttons</th>
@@ -290,19 +290,19 @@ if(isset($_POST["action"]) && $_POST['action'] == "delete" && isset($_POST["id"]
     ?>
       <tr class="text-sm">
           <td class="flex relative px-10 sm:px-4 w-max mt-8 sm:mt-3"><img src="files/images/<?=$cards['image1']?>" class="w-9 h-9 sm:w-12 sm:h-12 rounded-full object-cover z-20 absolute md:relative shadow-sm left-0"><img src="files/images/<?=$cards['image2']?>" class="w-9 h-9 sm:w-12 sm:h-12 rounded-full object-cover z-10 absolute left-4 md:left-8 shadow-md"><img src="files/images/<?=$cards['image3']?>" class="w-9 h-9 sm:w-12 sm:h-12 rounded-full object-cover absolute left-7 md:left-11 shadow-lg"></td>
-          <td class="py-5 px-2"><?=$cards['title']?></td>
           <td class="px-2"><?=$cards['cardName']?></td>
+          <td class="py-5 px-2"><?=$cards['subtitle']?></td>
           <td class="whitespace-nowrap overflow-hidden text-ellipsis max-w-[100px] px-2"><?=$cards['description']?></td>
           <td class="px-2"><?=$cards['name']?></td>
           <td class="py-5">
           <div class="flex flex-col gap-4 md:flex-row md:gap-1">
             <a href="index.php?r=<?=$routePage?>&action=delete&cards=<?=$cards['id']?>">
-              <svg class="w-8 h-8 border dark:bg-orange-200 bg-orange-900 dark:border-orange-300 border-orange-700 rounded transition duration-500" fill="currentColor" version="1.0" viewBox="0 0 256 256">
+              <svg class="w-8 h-8 border bg-orange-200 dark:bg-orange-900 border-orange-300 dark:border-orange-700 rounded transition duration-500" fill="currentColor" version="1.0" viewBox="0 0 256 256">
                 <path d="M54.1 116.3c-1.9.6-4.9 2.6-6.8 4.4-2.6 2.7-3.3 4.2-3.3 7.3 0 4.9 4.6 10 10.7 11.8 5.8 1.7 140.8 1.7 146.6 0 6.1-1.8 10.7-6.9 10.7-11.8s-4.6-10-10.7-11.8c-5.4-1.6-142.1-1.5-147.2.1z"/>
               </svg>
             </a>
             <a href="index.php?r=<?=$routePage?>&action=edit&cards=<?=$cards['id']?>">
-              <svg class="w-8 h-8 border dark:bg-orange-200 bg-orange-900 dark:border-orange-300 border-orange-700 rounded transition duration-500" fill="currentColor" version="1.0" viewBox="0 0 256 256">
+              <svg class="w-8 h-8 border bg-orange-200 dark:bg-orange-900 border-orange-300 dark:border-orange-700 rounded transition duration-500" fill="currentColor" version="1.0" viewBox="0 0 256 256">
                 <path d="M178.5 42.4c-1.6.8-7 5.4-11.8 10.3l-8.8 8.9 18.1 18 18 17.9 10-10c9.3-9.4 10-10.3 10-14 0-3.8-.7-4.7-13.7-17.7-7.9-7.9-14.9-13.9-16.3-14.2-1.4-.3-3.8.1-5.5.8zm-84.3 82.9L41 178.5V215h35.5l53.5-53.5 53.5-53.5-18-18-18-18-53.3 53.3z"/>
               </svg>
             </a>
