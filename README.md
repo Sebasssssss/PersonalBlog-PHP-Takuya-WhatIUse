@@ -6,7 +6,7 @@ This is my firs time building a web that supports dark mode, and in my opinion t
 * * *
 ![j_BCwugvR-MMxIJsRaw-opMerlwBw-darklight](https://user-images.githubusercontent.com/105828786/201495026-037ba440-a51c-4746-9bcd-cbcca07ef417.png)
 * * *
-](inkdrop://note/-hAbKidX-5)![9_p0RQHeo-AVCx_-URf-XPo1dFLaK-categories](https://user-images.githubusercontent.com/105828786/201495048-c08a7604-764d-4f48-b75f-4b99021ad15f.png)
+![9_p0RQHeo-AVCx_-URf-XPo1dFLaK-categories](https://user-images.githubusercontent.com/105828786/201495048-c08a7604-764d-4f48-b75f-4b99021ad15f.png)
 
 # Inside the cards 
 It'll be 2 photos with some information in between of them, making it minimaist and at the same time very clean.
