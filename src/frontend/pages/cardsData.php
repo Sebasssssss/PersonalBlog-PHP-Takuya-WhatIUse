@@ -91,7 +91,7 @@
 </section>
 	
 <footer class="text-center mt-4 p-3">
-	<h1 class="opacity-40">© 2022 Sebass. All rights reserved. Web based on </h1><a href="https://www.craftz.dog/" class="opacity-50">Takuya Matsuyama's work</a>
+	<h1 class="opacity-40">Web based on </h1><a href="https://www.craftz.dog/" class="opacity-50">Takuya Matsuyama's work</a>
 </footer>
 
 <script src="../../../public/js/app.js"></script>
