@@ -17,21 +17,21 @@ $listCards = $objIndex->listCards();
   <link rel="stylesheet" href="../../css/styles.css">
   <link rel="stylesheet" href="../../css/global.css">
   <script is:inline>
-const theme = (() => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme')
+  const theme = (() => {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        return localStorage.getItem('theme')
+      }
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark'
+      }
+      return 'light'
+    })()
+    if (theme === 'light') {
+      document.documentElement.classList.remove('dark')
+    } else {
+      document.documentElement.classList.add('dark')
     }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark'
-    }
-    return 'light'
-  })()
-  if (theme === 'light') {
-    document.documentElement.classList.remove('dark')
-  } else {
-    document.documentElement.classList.add('dark')
-  }
-</script>
+  </script>
 </head>
 <body class="bg-orange-50 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-300 transition-colors duration-500">
   <header class="backdrop-blur-md w-full p-2 z-40 fixed">
